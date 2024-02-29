@@ -25,36 +25,60 @@ const CreateUser = () => {
     <div className='container'>
       <div className='row'>
         <div className='col'>
-          <h1>Dar de alta un nuevo usuario</h1>
           <form onSubmit={storeUsuario}>
-            <div className='mb-3'>
-              <label className='form-label'>Nombre</label>
-              <input
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                type="text"
-                className='form-control'
-              />
+            <div className='card'>
+              <div className="bg"></div>
+              <div className="blob"></div>
+              <div className='input-container' style={{ marginTop: '80px' }}>
+                <div className="icon-container">
+                  {/* Aquí va el ícono de Nombre*/}
+                </div>
+                <input
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                  type="text"
+                  className='form-control input-field'
+                  placeholder="Ingresa el nombre"
+                  name="nombre"
+                  id="nombre"
+                  autoComplete="name"
+                />
+                <label className='input-label' htmlFor="nombre">Nombre</label>
+              </div>
+              <div className='input-container'>
+                <div className="icon-container">
+                  {/* Aquí va el ícono de Correo */}
+                </div>
+                <input
+                  value={correo}
+                  onChange={(e) => setCorreo(e.target.value)}
+                  type="email"
+                  className='form-control input-field'
+                  placeholder="Ingresa el correo"
+                  name="correo"
+                  id="correo"
+                  autoComplete="email"
+                />
+                <label className='input-label' htmlFor="correo">Correo</label>
+              </div>
+              <div className='input-container'>
+                <div className="icon-container">
+                 {/* Aquí va el ícono de teléfono */}
+                </div>
+                <input
+                  value={telefono}
+                  onChange={(e) => setTelefono(e.target.value)}
+                  type="tel"
+                  className='form-control input-field'
+                  placeholder="Ingresa el teléfono"
+                  name="telefono"
+                  id="telefono"
+                  autoComplete="tel"
+                />
+                <label className='input-label' htmlFor="telefono">Teléfono</label>
+              </div>
+              <button type='submit' className='btn btn-primary save-button'>Guardar</button>
             </div>
-            <div className='mb-3'>
-              <label className='form-label'>Correo</label>
-              <input
-                value={correo}
-                onChange={(e) => setCorreo(e.target.value)}
-                type="email"
-                className='form-control'
-              />
-            </div>
-            <div className='mb-3'>
-              <label className='form-label'>Teléfono</label>
-              <input
-                value={telefono}
-                onChange={(e) => setTelefono(e.target.value)}
-                type="tel"
-                className='form-control'
-              />
-            </div>
-            <button type='submit' className='btn btn-primary'>Guardar</button>
           </form>
         </div>
       </div>

@@ -1,0 +1,82 @@
+.button {
+    position: relative;
+    width: auto; /* Ancho automático para ajustarse al contenido */
+    max-width: 380px; /* Ancho máximo para evitar que el botón se extienda demasiado */
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid #073b14;
+    background-color: #3aa856;
+    overflow: hidden;
+  }
+  
+  .link {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+  }
+  
+  .button__text {
+    color: #fff;
+    font-weight: 600;
+    text-align: center; /* Centra el texto horizontalmente */
+    flex: 1; /* El texto ocupa todo el espacio disponible */
+    padding: 0 10px; /* Añade un poco de espacio alrededor del texto */
+  }
+  
+  .button__icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%; /* Divide el espacio entre el texto y el ícono */
+    transition: transform 0.3s; /* Aplicar transición solo en la posición */
+  }
+  
+  .button__text {
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button__icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Ajusta el ancho del icono */
+    transition: transform 0.3s; /* Aplicar transición solo en la posición */
+    right: 5px; /* Ajusta la posición del icono hacia la derecha */
+  }
+  
+  .button__icon .svg {
+    width: 30px;
+    stroke: #fff;
+    background: #288640;
+  }
+  
+  .button:hover {
+    background: #288640;
+  }
+  
+  .button:hover .button__text {
+    transform: translateX(30px); /* Mover el texto hacia la derecha */
+    color: transparent;
+  }
+  
+  .button:hover .button__icon {
+    transform: translateX(-160px); /* Mover el icono hacia la izquierda */
+  }
+  
+  .button:active {
+    border: 1px solid #2e8644;
+  }
+  
+  .button:active .button__icon {
+    background-color: #003f10;
+  }
+  
+  
+  

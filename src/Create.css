@@ -1,0 +1,165 @@
+.icon-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; 
+  height: 50px; 
+  border-radius: 40%; 
+  background-color: #000000;
+  padding-left: 6.5px;
+  padding-top: 4.5px;
+}
+
+/* Ajusta el tamaño y color del icono si es necesario */
+.icon-container .me-2 {
+  font-size: 1.5em; 
+  color: white; 
+  margin: 0;
+}
+
+.icon-container:hover {
+  background-color: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+}
+
+
+.input-container {
+    --c-text: rgb(50, 50, 80);
+    --c-bg: rgb(252, 252, 252);
+    --c-outline: rgb(55, 45 , 190);
+    display: block;
+    margin: 30px auto;
+    position: relative;
+    max-width: 1000px; /* Ancho máximo para los contenedores */
+    margin-left: 110px; /* Margen automático a la izquierda */
+    margin-right: 160px; /* Margen automático a la derecha */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    text-align: center;
+    margin-top: 20px; /* Agrega un margen en la parte superior */
+    margin-bottom: 20px;
+  }
+
+  .input-field {
+    padding: 0.5em 0.75em;
+    border-radius: 0.2em;
+    border: 1px solid var(--c-border, currentColor);
+    color: var(--c-text);
+    font-size: 1rem;
+    letter-spacing: 0.1ch;
+    width: calc(100% - 2em); /* Reduce el ancho del input en 2em (1em de cada lado) */
+    margin: 0 1em; /* Agrega un margen de 1em a cada lado */
+  }
+
+  .input-field:not(:placeholder-shown) + .input-label {
+    transform: translateY(-220%);
+    opacity: 1;
+  }
+
+  .input-field:invalid {
+    --c-border: rgb(230, 85, 60);
+    --c-text: rgb(230, 85, 60);
+    --c-outline: rgb(230, 85, 60);
+  }
+
+  .input-field:is(:disabled, :read-only) {
+    --c-border: rgb(0, 0, 0);
+    --c-text: rgb(0, 0, 0);
+  }
+  
+  .input-field:is(:focus, :focus-visible) {
+    outline: 2px solid var(--c-outline);
+    outline-offset: 2px;
+  }
+  
+  .input-label {
+    --timing: 200ms ease-in;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transition: transform var(--timing), opacity var(--timing);
+    transform: translateY(-50%);
+    opacity: 0;
+    color: var(--c-text);
+    font-weight: 500;
+  }
+
+  .card {
+    position: relative; /* Change from sticky to relative */
+    width: 100%;
+    height: auto; /* Change height to auto */
+    margin: 10px auto 20px; /* Adjust margin */
+    border-radius: 0;
+    overflow: hidden;
+    padding: 5px;
+    height: 200vh; /* Establece la altura al 100% de la altura de la ventana */
+  }
+  
+  .bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, rgba(100, 93, 93, 0.507), #7c7c7c);
+  }
+
+  .blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ff0000; /* Cambia el color del blob según sea necesario */
+    opacity: 0.5; /* Ajusta la opacidad según sea necesario */
+    filter: blur(12px);
+    animation: blob-bounce 5s infinite ease;
+  }
+  
+  @keyframes blob-bounce {
+    0% {
+      transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+  
+    25% {
+      transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+    }
+  
+    50% {
+      transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+    }
+  
+    75% {
+      transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+    }
+  
+    100% {
+      transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+  }
+
+  .save-button {
+    display: block;
+    margin: 15px auto; 
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #725AC1;
+    background: white;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #725AC1;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #725AC1;
+    z-index: 1; /* Añadido para asegurar que el botón esté por encima de otros elementos */
+}
+  
+  .save-button:hover {
+    color: white; /*blanco */
+    background: #725AC1; /* morado */
+    box-shadow: inset 0 -100px 0 0 #725AC1;
+  }
+  
+  .save-button:active {
+    transform: scale(0.9);
+  }
+  

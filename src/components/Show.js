@@ -4,6 +4,7 @@ import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';  // Im
 import { db } from '../firebaseConfig/firebase';  // Importamos la instancia de Firebase Firestore
 import Swal from 'sweetalert2';  // Importamos la librería SweetAlert2
 import withReactContent from 'sweetalert2-react-content';  // Importamos la función withReactContent de SweetAlert2
+import TableCRUD from "./TableCRUD";
 
 const MySwal = withReactContent(Swal);  // Creamos una instancia de SweetAlert2
 
@@ -53,37 +54,32 @@ const ShowBarbacoas = () => {  // Definimos el componente funcional ShowBarbacoa
     getBarbacoas();  // Llamamos a la función para obtener las barbacoas
   }, []);
 
+  const labels=["Nombre", "Ubicación", "Horario", "", ""];
+  const data = barbacoas.map(barbacoa=>{
+    return {
+      id: barbacoa.id,
+      data_row: [barbacoa.nombre_barbacoa, barbacoa.ubicacion_barbacoa, barbacoa.horario_barbacoa],
+    };
+  });
+
   // Devolvemos la vista de nuestro componente
   return (
-    <div className='container'>
+    <div className='container Show'>
       <div className='row'>
         <div className='col'>
-          <div className="d-grid gap-2">
-            <Link to="/create" className='btn btn-primary mt-2 mb-2'>Dar de alta un nuevo lugar de barbacoa</Link>
+          <div className="button-container" style={{ marginBottom: '20px', marginTop: '10px' }}> {/* Contenedor del botón Add Item */}
+            <Link to="/create" className="button link"> {/* Enlace al formulario de creación */}
+              <span className="button__text">Dar de alta un nuevo lugar de barbacoa</span>
+              <span className="button__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" stroke="currentColor" height="24" fill="none" className="svg">
+                  <line y2="19" y1="5" x2="12" x1="12"></line>
+                  <line y2="12" y1="12" x2="19" x1="5"></line>
+                </svg>
+              </span>
+            </Link>
           </div>
-          <table className='table table-striped table-bordered table-hover'>
-            <thead className="thead-dark">
-              <tr>
-                <th className="text-center bg-dark text-light">Nombre</th>
-                <th className="text-center bg-dark text-light">Ubicación</th>
-                <th className="text-center bg-dark text-light">Horario</th>
-                <th className="text-center bg-dark text-light">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {barbacoas.map((barbacoa, index) => (
-                <tr key={barbacoa.id} className={index % 2 === 0 ? 'table-light' : 'table-secondary'}>
-                  <td>{barbacoa.nombre_barbacoa}</td>
-                  <td>{barbacoa.ubicacion_barbacoa}</td>
-                  <td>{barbacoa.horario_barbacoa}</td>
-                  <td className="text-center">
-                    <Link to={`/edit/${barbacoa.id}`} className="btn btn-info btn-sm"><i className="fa-solid fa-pencil"></i> Editar</Link>
-                    <button onClick={() => { confirmDelete(barbacoa.id) }} className="btn btn-danger btn-sm ml-2"><i className="fa-solid fa-trash"></i> Eliminar</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          
+          <TableCRUD labels={labels} bodyData={data} editRoute="/edit/" deleteFunction={confirmDelete} />
         </div>
       </div>
     </div>

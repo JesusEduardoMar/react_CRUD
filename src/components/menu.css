@@ -1,0 +1,153 @@
+.containermenu {
+    /* Agregamos un color de fondo al contenedor principal */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ajustar altura al 100% del alto de la ventana */
+  }
+  
+  .top-section {
+    width: 100%;
+    height: 40%;
+    background-image: radial-gradient(circle, orange, transparent 20%, orangered);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: orange;
+    position: relative;
+  }
+  
+  .bottom-section {
+    background-color: #f8f8f8; /* Color para la parte inferior */
+    flex-grow: 1;
+  }
+  
+  .colmenu {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    margin: 40px;
+    height: 100px;
+  }
+  
+  .tittletext {
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 88px;
+    font-weight: bold;
+    color: #0e70ad;
+  }
+  
+  .logomenu{ /* Logo de foto */
+    display: block;
+    margin-bottom: 20px;
+    max-width: 100%;
+    width: 100px;
+    max-height: 100%;
+    border-radius: 10px; 
+    margin-right: 20px; /* Ajusta el margen derecho para mover la imagen hacia la izquierda */
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .cssbuttons-io {
+    position: relative;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    border-radius: 0.8em;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(to right, #ff8000, #ff4000);
+    color: ghostwhite;
+    overflow: hidden;
+    margin-right: 20px;
+  }
+  
+  .cssbuttons-io svg {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.5em;
+  }
+  
+  .cssbuttons-io span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8em 1.2em 0.8em 1.05em;
+  }
+  
+  .cssbuttons-io::before,
+  .cssbuttons-io::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  .cssbuttons-io::before {
+    content: "";
+    background: linear-gradient(to right, #FFA500, #8B4500);
+    width: 120%;
+    left: -10%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+  }
+  
+  .cssbuttons-io:hover::before {
+    transform: translate3d(100%, 0, 0);
+  }
+  
+  .cssbuttons-io:active {
+    transform: scale(0.95);
+  }
+  
+  
+  .me-2 {
+    margin-right: 0.5rem;
+  }
+  
+  
+  /* Media query para dispositivos muy pequeños, como teléfonos móviles */
+  @media screen and (max-width: 576px) {
+    .top-section {
+      height: 30%; /* Reducimos la altura para dar más espacio a la parte inferior */
+      padding: 20px; /* Añadimos un poco de espacio interior */
+      text-align: center; /* Centramos el texto */
+      display: flex; /* Utilizamos flexbox para centrar verticalmente el contenido */
+      flex-direction: column; /* Alineamos el contenido en columna */
+      justify-content: center; /* Centramos verticalmente el contenido */
+    }
+  
+    .tittletext {
+      font-size: 48px; /* Reducimos el tamaño del texto */
+      margin-bottom: 10px; /* Reducimos el margen inferior */
+    }
+  
+    .logomenu {
+      width: 80px; /* Reducimos el tamaño del logo */
+      margin: 10px auto; /* Centramos horizontalmente la imagen */
+    }
+  
+    .bottom-section {
+      padding: 20px; /* Añadimos un poco de espacio interior */
+    }
+  
+    .colmenu {
+      margin: 20px;
+    }
+  
+    .cssbuttons-io {
+      font-size: 14px; /* Reducimos el tamaño de fuente de los botones */
+      margin-right: 10px; /* Reducimos el margen entre botones */
+      margin-bottom: 10px; /* Añadimos margen inferior para separar los botones */
+    }
+  
+    .cssbuttons-io span {
+      padding: 0.5em 0.6em; /* Ajustamos el relleno del texto dentro de los botones */
+    }
+  }

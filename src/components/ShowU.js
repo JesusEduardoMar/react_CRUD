@@ -4,6 +4,8 @@ import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../firebaseConfig/firebase';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import TableCRUD from "./TableCRUD";
+
 
 const MySwal = withReactContent(Swal);
 
@@ -47,39 +49,37 @@ const ShowUsers = () => {
     getUsers();
   }, []);
 
+  
+  const labels=["Nombre", "Correo", "Teléfono", "", ""];
+  const data = users.map(user=>{
+    return {
+      id: user.id,
+      data_row: [user.nombre, user.correo, user.telefono],
+    };
+  });
+
   return (
-    <div className='container'>
+    <div>
+      <div className='container Show'>
       <div className='row'>
         <div className='col'>
-          <div className="d-grid gap-2">
-            <Link to="/createu" className='btn btn-primary mt-2 mb-2'>Crear nuevo usuario</Link>
+          <div className="button-container" style={{ marginBottom: '20px', marginTop: '10px' }}> {/* Contenedor del botón Add Item */}
+            <Link to="/createU" className="button link"> {/* Enlace al formulario de creación */}
+              <span className="button__text">Dar de alta un nuevo usuario</span>
+              <span className="button__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" stroke="currentColor" height="24" fill="none" className="svg">
+                  <line y2="19" y1="5" x2="12" x1="12"></line>
+                  <line y2="12" y1="12" x2="19" x1="5"></line>
+                </svg>
+              </span>
+            </Link>
           </div>
-          <table className='table table-striped table-bordered table-hover'>
-            <thead className="thead-dark">
-              <tr>
-                <th className="text-center bg-dark text-light">Nombre</th>
-                <th className="text-center bg-dark text-light">Correo</th>
-                <th className="text-center bg-dark text-light">Teléfono</th>
-                <th className="text-center bg-dark text-light">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={user.id} className={index % 2 === 0 ? 'table-light' : 'table-secondary'}>
-                  <td>{user.nombre}</td>
-                  <td>{user.correo}</td>
-                  <td>{user.telefono}</td>
-                  <td className="text-center">
-                    <Link to={`/editu/${user.id}`} className="btn btn-info btn-sm"><i className="fa-solid fa-pencil"></i> Editar</Link>
-                    <button onClick={() => { confirmDelete(user.id) }} className="btn btn-danger btn-sm ml-2"><i className="fa-solid fa-trash"></i> Eliminar</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          </div>
         </div>
+        <TableCRUD labels={labels} bodyData={data} editRoute="/editu/" deleteFunction={confirmDelete} />
       </div>
     </div>
+
   );
 }
 
